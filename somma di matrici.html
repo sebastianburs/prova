@@ -1,0 +1,90 @@
+<!--Dati i 2 vettori
+var vettoreA = [10, 4, "b", 11, 13];
+var vettoreB = ["a", 8, 9, "c", 21];
+sommare il primo valore del vettoreA con il primo valore del vettoreB e cosi' via per tutti gli altri valori dei vettori.
+Memorizzare i risultati nel vettoreC.
+Tenere conto del fatto che nei vettori non sono presenti solamente numeri.
+In caso non possa essere effettuare l'operazione, dato che non si puo' moltiplicare un
+numero per una lettera, salvare il valore -1;
+Esempio: vettoreC sara' uguale a [-1, 12, -1, -1, 34]
+Visualizzare graficamente nella pagina HTML il vettoreC.
+Suggerimento: per controllare se un valore e' numerico utilizzare la funzione
+/*
+	Restituisce true se il valore passato e' un numero
+	altrimenti false
+*/
+function isNumber(val) {
+	return !isNaN(val);
+}
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Somma di matrici</title>
+	<style type="text/css">									/* inserisco un foglio di stile interno al file per essere più comodo delle modifiche*/
+		body
+		{
+			background-color: #654321;						/* Imposto un bg color marrone*/
+		}
+		.risultato, .vettoreA, .vettoreB						
+		{
+			font-size: 60px;								/* Dimensione font*/
+			color: red;										/*Colore testo*/
+			text-align: center;								/* allineamento testo*/
+			transition: 0.3s;								/* Tempo transizione effetti*/
+		}
+		p:hover												/* se mouse sopra il paragrafo*/
+		{	
+			color: green;									/*colore testo verde*/
+		}
+		h2
+		{
+			text-align: center;								/* Allineamento testo*/
+			font-size: 30px;								/* Dimensioni testo*/
+		}	
+	</style>
+
+	
+</head>
+<body >
+	<h1 style="text-align: center; color: darkgrey; font-size: 60px"> I valori sommati del vettore A con il vettore B sono</h1> <!-- Inserisco un titolo principale-->
+	<p class="vettoreA" id="vettoreA"></p>			<!-- Inserisco i 3 vettori che verrano in output-->
+	<p class="vettoreB" id="vettoreB"></p>
+	<p id="risultato" class="risultato" > </p>
+	<h2> I valori -1 sono una somma errata, mentre i valori (-1) sono il valore di una somma reale			<!-- Inserisco un commento che spiega il caso -1-->
+
+	<script type="text/javascript">
+		
+		var vettoreA=[10,4,"b",11,13];						// creo 3 array per contenere le variabili da sommare e alla fine da fornire come risultato in output
+		var vettoreB=["a",8,9,"c",-14];
+		var vettoreC=[];
+		var variabile;
+
+		for (i=0;i<vettoreA.length;i++)						// imposto un ciclo che si ripeta finchè il valore di i non è pari alla lunghezz del vettore A che è uguale alla lunghezza del vettore B
+		{
+			if(isNaN(vettoreA[i])==true||vettoreB[i]==true)		// imposto delle condizioni per cui il valore dei vettori non è un numero isNaN(is not a number)
+			{
+				variabile=-1
+			}		
+			
+			else if(vettoreA[i]+vettoreB[i]==-1||vettoreB[i]+vettoreA[i]==-1)	//imposto un controllo che se la somma è uguale a 1 allora mette tra parentesi il risultato, per poterlo distinguere dagli altri
+			{
+				variabile="(-1)"
+			}
+			else										// quando non rientra nei casi particolari effettua la somma
+			{
+				variabile=vettoreA[i]+vettoreB[i]
+			}
+			vettoreC.push(variabile)					// inserisce il valore attribuito alla variabile al vettore C
+
+		}
+		document.getElementById("risultato").innerHTML = vettoreC+ " Vettore C"	
+		// recupera il paragrafo con classe risultato e gli assegna il valore del vettore C con la scritta Vettore C
+		document.getElementById("vettoreA").innerHTML = vettoreA+" Vettore A";
+		// recupera il paragrafo con classe risultato e gli assegna il valore del vettore A con la scritta Vettore A
+		document.getElementById("vettoreB").innerHTML = vettoreB+" Vettore B";
+		// recupera il paragrafo con classe risultato e gli assegna il valore del vettore A con la scritta Vettore A
+	</script>
+
+</body>
+</html>
